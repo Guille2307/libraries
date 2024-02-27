@@ -1,0 +1,70 @@
+@import "../../../../../assets/scss/styles.scss";
+
+form {
+  width: calc(100% - 32px);
+  margin: 16px;
+  border: 1px solid;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+
+  .icon {
+    font-size: 24px;
+    margin: 0 4px;
+  }
+
+  input {
+    font-size: 14px;
+    background-color: transparent;
+    border: none;
+    margin: 4px 0;
+    padding: 0;
+    width: calc(100% - 64px);
+  }
+
+  &.input {
+    background-color: $backgroundInput;
+    border-color: $emphasis;
+
+    .icon {
+      &.left {
+        color: $emphasis;
+      }
+
+      &.right {
+        color: $fontInput;
+      }
+    }
+
+    input {
+      color: $fontInput;
+
+      &::placeholder {
+        color: $placeholderInput;
+      }
+    }
+  }
+
+  &.transparent {
+    background-color: transparent;
+    border-color: white;
+
+    .icon {
+      &.left {
+        color: white;
+      }
+
+      &.right {
+        color: white;
+      }
+    }
+
+    input {
+      color: white;
+
+      &::placeholder {
+        color: rgba(white, 0.7);
+      }
+    }
+  }
+}

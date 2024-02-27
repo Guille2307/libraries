@@ -1,0 +1,84 @@
+<ion-content *ngIf="this.daysTabs.length < 5" class="menu-content">
+    <button mat-fab class="fab-button search" (click)="sideSearchbar.toggle()">
+        <i class="icon icon_w_icons_search_small"></i>
+    </button>
+    <ion-segment class="tabs big-tabs" (ionChange)="segmentChanged($event)" [(ngModel)]="currentTab" ngDefaultControl>
+        <ion-segment-button class="title-container segment-button" *ngFor="let day of daysTabs" value="{{day.fulldate}}"
+            id="{{day.fulldate}}">
+            <ion-label class="month-year">{{translations.schedule.months[day.month]}} {{day.year}}</ion-label>
+            <div style="width: 100%;">
+                <ion-label class="day">{{day.day}}</ion-label>
+            </div>
+            <ion-label>{{translations.schedule.weekdays[day.weekday]}}</ion-label>
+        </ion-segment-button>
+    </ion-segment>
+
+    <div class="content-days" [ngSwitch]="currentTab" style="overflow-y: auto;
+        height: calc(100% - 100px);">
+        <div class="explanation-container">
+            <i class="icon icon_w_icons_information_circle"></i>
+            <ion-label *ngIf="!editAgenda">{{translations.info}}</ion-label>
+            <ion-label *ngIf="editAgenda">{{translations.infoEdit}}</ion-label>
+        </div>
+        <div class="button-create-container" *ngIf="editAgenda">
+            <custom-button [iconLeft]="'icon_w_icons_add'" [short]="true" [translation]="translations.edit.buttonCreate"
+                (onClick)="newEvent.emit(true)"></custom-button>
+        </div>
+        <div class="day-content" *ngFor="let day of daysTabs">
+            <ion-list class="content-cards" *ngSwitchCase="day.fulldate">
+                <ion-title class="no-events" *ngIf="schedule.length === 0">{{ translations.noEvents }}
+                </ion-title>
+                <div class="agenda-card" *ngFor="let item of schedule | filter: query">
+                    <agenda-card [editCard]="editAgenda" [showBell]="true" [card]="item" [translations]="translations"
+                        *ngIf="conditionDay(item.starts, day.fulldate)" (actionCard)="receiveActionCard($event)">
+                    </agenda-card>
+                </div>
+            </ion-list>
+        </div>
+    </div>
+</ion-content>
+<ion-content *ngIf="this.daysTabs.length >= 5" class="menu-content">
+    <button mat-fab class="fab-button search" (click)="sideSearchbar.toggle()">
+        <i class="icon icon_w_icons_search_small"></i>
+    </button>
+
+    <div class="dropdown-container">
+        <div class="dropdown-button-container">
+            <button class="dropdown-button" (click)="openMonthsPopover.emit($event)">
+                <div class="name-container">
+                    <ion-label>{{translations.schedule.months[selectedMonth]}}</ion-label>
+                    <i class="icon right icon_w_icons_arrow_function_down"></i>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <div class="content-days" style="overflow-y: auto; height: calc(100% - 50px);">
+        <div class="explanation-container">
+            <i class="icon icon_w_icons_information_circle"></i>
+            <ion-label *ngIf="!editAgenda">{{translations.info}}</ion-label>
+            <ion-label *ngIf="editAgenda">{{translations.infoEdit}}</ion-label>
+        </div>
+        <div class="button-create-container" *ngIf="editAgenda">
+            <custom-button [iconLeft]="'icon_w_icons_add'" [short]="true" [translation]="translations.edit.buttonCreate"
+                (onClick)="newEvent.emit(true)"></custom-button>
+        </div>
+        <ion-title class="no-events" *ngIf="schedule.length === 0">{{ translations.noEvents }}</ion-title>
+        <div>
+            <ion-list class="content-cards">
+                <div
+                    *ngFor="let item of schedule | filterWithStarts: selectedMonth: query: translations.schedule.months; let i = index">
+                    <ion-item-divider color="light" *ngIf="showHeader(item.starts, i)">
+                        <div style="height: 30px; width: 100%; display: contents;">
+                            <label class="border">{{translations.schedule.months[getHeader(item)]}}</label>
+                            <div class="line"></div>
+                        </div>
+                    </ion-item-divider>
+                    <agenda-card [editCard]="editAgenda" [showBell]="true" [card]="item" [translations]="translations"
+                        (cardDeleted)="getCardDeleted($event)" (actionCard)="receiveActionCard($event)">
+                    </agenda-card>
+                </div>
+            </ion-list>
+        </div>
+    </div>
+</ion-content>

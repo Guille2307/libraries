@@ -1,0 +1,12 @@
+<button class="transparent" [disabled]="disabled" [ngClass]="{'short': short, 'button': class === 'button',
+  'tick': class === 'tick', 'pro': class === 'pro', 'pass': class === 'pass', 'pal': class === 'pal',
+  'hub': class === 'hub', 'disabled': disabled}" [type]="{'button': type === 'button', 'submit': type === 'submit'}"
+  (click)="click($event)">
+  <div class="ion-activatable ripple-parent">
+    <i *ngIf="iconLeft !== ''" class="icon left {{iconLeft}}"></i>
+    <ion-title size="large" [innerHtml]="translation">
+    </ion-title>
+    <i *ngIf="iconRight !== ''" class="icon right {{iconRight}}"></i>
+    <ion-ripple-effect></ion-ripple-effect>
+  </div>
+</button>

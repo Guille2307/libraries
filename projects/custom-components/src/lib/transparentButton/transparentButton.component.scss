@@ -1,0 +1,50 @@
+@import "../../../../../assets/scss/styles.scss";
+
+button {
+  &.button {
+    @include transparentButton(38px, 2px, $interactive);
+  }
+
+  &.tick {
+    @include transparentButton(38px, 2px, $tick);
+  }
+
+  &.pro {
+    @include transparentButton(38px, 2px, $pro);
+  }
+
+  &.pass {
+    @include transparentButton(38px, 2px, $pass);
+  }
+
+  &.pal {
+    @include transparentButton(38px, 2px, $pal);
+  }
+
+  &.hub {
+    @include transparentButton(38px, 2px, $hub);
+  }
+
+  &.short {
+    height: (28px + 16px) !important;
+
+    div.ion-activatable {
+      height: 28px !important;
+
+      ion-label,
+      ion-title {
+        font-size: 14px !important;
+      }
+
+      .icon {
+        &.left {
+          font-size: 25px !important;
+        }
+
+        &.right {
+          font-size: 20px !important;
+        }
+      }
+    }
+  }
+}

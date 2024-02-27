@@ -1,0 +1,82 @@
+<ion-header class="menu" [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            {{ translations.title }}
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content style="--overflow: hidden; --background: transparent;">
+    <ion-header class="submenu" [translucent]="true" *ngIf="showCont">
+        <ion-toolbar>
+            <ion-buttons slot="start" class="marg-left">
+                <ion-button class="icon-button" fill="clear" (click)="getCount.emit(true)">
+                    <i class="icon icon_w_icons_sync"></i>
+                </ion-button>
+            </ion-buttons>
+            <ion-title>
+                {{ translations.lblCont }}
+                <span class="bold">{{ contAssistants }}</span>
+            </ion-title>
+            <ion-buttons slot="end" class="marg-right">
+                <ion-button class="title-button" fill="clear" (click)="goToCapacity.emit(true)">
+                    <ion-title size="large">
+                        {{ translations.btnShowMore }}
+                    </ion-title>
+                </ion-button>
+            </ion-buttons>
+        </ion-toolbar>
+    </ion-header>
+    <div style="height: 100%;" [style.background]="showCam ? '#00000000' : '#eeeeee'">
+        <barcode-scanner *ngIf="showCam" (sendCode)="receiveCode($event)"></barcode-scanner>
+        <div [hidden]="showCam" class="scan-container">
+            <i class="icon icon_w_icons_scan"></i>
+            <ion-title size="large">{{ translations.scanner.title }}</ion-title>
+            <ion-label [innerHtml]="translations.scanner.subtitle"></ion-label>
+        </div>
+    </div>
+</ion-content>
+<ion-footer *ngIf="!codeRead">
+    <ion-toolbar *ngIf="!showSearchInput && !cashless">
+        <div class="btns-container">
+            <ion-button fill="clear" class="half" (click)="toggleShowInput()">
+                <div class="btn-content">
+                    <i class="icon icon_w_icons_search_small"></i>
+                    <ion-title size="large">{{ translations.scanner.search }}</ion-title>
+                </div>
+            </ion-button>
+            <ion-button fill="clear" class="half" (click)="toggleShowCam()">
+                <div class="btn-content" *ngIf="!showCam">
+                    <i class="icon icon_w_icons_camera"></i>
+                    <ion-title size="large">{{ translations.scanner.openCam }}</ion-title>
+                </div>
+                <div class="btn-content" *ngIf="showCam">
+                    <i class="icon icon_w_icons_camera_off"></i>
+                    <ion-title size="large">{{ translations.scanner.closeCam }}</ion-title>
+                </div>
+            </ion-button>
+        </div>
+    </ion-toolbar>
+    <ion-toolbar *ngIf="showSearchInput || cashless" class="input-container">
+        <ion-buttons slot="start" *ngIf="!cashless">
+            <ion-button class="cancel" expand="full" size="large" fill="clear" (click)="toggleShowInput()">
+                <i class="icon icon_w_icons_cancel_circle"></i>
+            </ion-button>
+        </ion-buttons>
+        <custom-input slot="end" [placeholder]="translations.scanner.input" iconLeft="icon_w_icons_search_small"
+            iconRight="icon_w_icons_arrow_nav_right" (sendEvent)="receiveCodeInput($event)">
+        </custom-input>
+    </ion-toolbar>
+</ion-footer>
+<ion-footer *ngIf="codeRead">
+    <ion-toolbar class="btn-container">
+        <ion-button fill="clear" expand="full" size="large" (click)="nextCode()">
+            <div class="btn-content">
+                <i class="icon icon_w_icons_scan"></i>
+                <ion-title size="large">{{ translations.scanner.nextScan }}</ion-title>
+            </div>
+        </ion-button>
+    </ion-toolbar>
+</ion-footer>

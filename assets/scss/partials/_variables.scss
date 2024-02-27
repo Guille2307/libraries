@@ -1,0 +1,72 @@
+//  FONT
+$textFontFamily: 'Poppins', sans-serif;
+
+//  COLORS
+/* GENERAL */
+* {
+  --primaryColor: white;
+  --secondaryColor: #FF6633;
+  --emphasis: #FF6633;
+  --interactive: #FF6633;
+  --selectedText: #1d1d1b;
+  --tick: #CD3467;
+  --pro: #6CC4C7;
+  --pass: #33CC33;
+  --pal: #FF6633;
+  --hub: #F9B100;
+}
+
+$backgroundColor: #EEEEEE;
+$fontColor: #1d1d1b;
+$borderColor: rgba(0, 0, 0, 0.3);
+
+$primaryColor: var(--primaryColor);
+$primaryTitle: #1d1d1b;
+$primaryIcon: #1d1d1b;
+
+$secondaryColor: var(--secondaryColor);
+$secondaryTitle: black;
+$secondaryIcon: #FF6633;
+
+$emphasis: var(--emphasis);
+$interactive: var(--interactive);
+$selectedText: var(--selectedText);
+
+$alert: red;
+
+/*  WOUTICK */
+$tick: var(--tick);
+$pro: var(--pro);
+$pass: var(--pass);
+$pal: var(--pal);
+$hub: var(--hub);
+
+$cancel: #cc3333;
+$accept: #33cc33;
+$progress: #6CC4C7;
+$timeless: #009999;
+$warning: #F9B100;
+
+/* CARDS */
+$backgroundCards: white;
+$fontCards: black;
+
+/* TABS */
+$backgroundTabs: white;
+$fontTabs: black;
+
+/* INPUTS */
+$backgroundInput: white;
+$fontInput: black;
+$borderInput: black;
+$placeholderInput: rgba($fontInput, 0.7);
+
+/* BUTTONS */
+$backgroundButton: white;
+$fontButton: black;
+$borderButton: $interactive;
+$hoverButton: white;
+
+@mixin backgroundenfasis($percentage) {
+  background-color: rgba($emphasis, $percentage);
+}

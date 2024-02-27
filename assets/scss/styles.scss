@@ -1,0 +1,20 @@
+@import "partials/variables";
+@import "partials/mixins";
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,900");
+
+button:focus,
+input:focus {
+  outline: none;
+}
+
+*:not(i) {
+  font-family: $textFontFamily !important;
+  $font-family-base: "Poppins" !important;
+  $font-family-ios-base: "Poppins" !important;
+  $font-family-md-base: "Poppins" !important;
+  $font-family-wp-base: "Poppins" !important;
+}
+
+:root {
+  --ion-font-family: "Poppins" !important;
+}

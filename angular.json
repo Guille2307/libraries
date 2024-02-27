@@ -1,0 +1,112 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "agenda": {
+      "projectType": "library",
+      "root": "projects/agenda",
+      "sourceRoot": "projects/agenda/src",
+      "prefix": "whub",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/agenda/tsconfig.lib.json",
+            "project": "projects/agenda/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/agenda/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/agenda/src/test.ts",
+            "tsConfig": "projects/agenda/tsconfig.spec.json",
+            "karmaConfig": "projects/agenda/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/agenda/tsconfig.lib.json",
+              "projects/agenda/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    },
+    "access-control": {
+      "projectType": "library",
+      "root": "projects/access-control",
+      "sourceRoot": "projects/access-control/src",
+      "prefix": "wtk",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/access-control/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/access-control/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/access-control/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "preserveSymlinks": true,
+            "main": "projects/access-control/src/test.ts",
+            "tsConfig": "projects/access-control/tsconfig.spec.json",
+            "karmaConfig": "projects/access-control/karma.conf.js"
+          }
+        }
+      }
+    },
+    "custom-components": {
+      "projectType": "library",
+      "root": "projects/custom-components",
+      "sourceRoot": "projects/custom-components/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/custom-components/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/custom-components/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/custom-components/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/custom-components/src/test.ts",
+            "tsConfig": "projects/custom-components/tsconfig.spec.json",
+            "karmaConfig": "projects/custom-components/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": false
+  },
+  "defaultProject": "access-control"
+}

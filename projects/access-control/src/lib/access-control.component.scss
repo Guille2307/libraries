@@ -1,0 +1,147 @@
+@import "../../../../assets/scss/styles.scss";
+
+ion-header.menu {
+  ion-toolbar {
+    ion-buttons {
+      ion-menu-button,
+      ion-back-button {
+        height: 50px;
+      }
+    }
+  }
+}
+
+.submenu {
+  position: absolute;
+  top: 0;
+}
+
+.scan-container {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+  &.img {
+    background-image: -webkit-linear-gradient(black, transparent, black);
+
+    img {
+      display: flex;
+      height: 360px;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+    }
+  }
+
+  .icon {
+    color: $fontColor;
+    font-size: 60px;
+    margin: 40px auto;
+  }
+
+  ion-title {
+    position: relative;
+    padding: 0;
+    text-align: center;
+    color: $fontColor;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 18px;
+  }
+
+  ion-label {
+    width: 300px;
+    text-align: center;
+    color: $fontColor;
+    font-weight: 400;
+    text-transform: none;
+    font-size: 14px;
+  }
+}
+
+.bold {
+  font-weight: 700 !important;
+}
+
+.btns-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: $backgroundColor;
+
+  ion-button.half {
+    width: calc(50% - 1px);
+    height: 80px;
+    background-color: $backgroundButton;
+    margin: auto 0;
+    --ripple-color: var(--interactive);
+
+    .btn-content {
+      height: 60%;
+      width: auto;
+      display: grid;
+
+      .icon {
+        font-size: 30px;
+        color: $interactive;
+      }
+
+      ion-title {
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: 400;
+        color: $fontButton;
+        position: relative;
+        padding: 0;
+      }
+    }
+  }
+}
+
+.input-container {
+  ion-button.cancel {
+    height: 80px;
+
+    .icon {
+      color: $cancel;
+      font-size: 25px;
+    }
+  }
+
+  custom-input {
+    width: 100%;
+  }
+}
+
+.btn-container {
+  ion-button {
+    width: 100%;
+    height: 80px;
+    background-color: $backgroundButton;
+    margin: auto 0;
+    --ripple-color: var(--interactive);
+
+    .btn-content {
+      height: 60%;
+      width: auto;
+      display: grid;
+
+      .icon {
+        font-size: 30px;
+        color: $interactive;
+      }
+
+      ion-title {
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: 400;
+        color: $fontButton;
+        position: relative;
+        padding: 0;
+      }
+    }
+  }
+}

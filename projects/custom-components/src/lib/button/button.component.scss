@@ -1,0 +1,73 @@
+@import "../../../../../assets/scss/styles.scss";
+
+button {
+  &.button {
+    @include button(38px, 1px, $interactive);
+  }
+
+  &.accept {
+    @include button(38px, 1px, $accept);
+  }
+
+  &.cancel {
+    @include button(38px, 1px, $cancel);
+
+    div {
+      ion-title {
+        padding-inline-start: 0 !important;
+      }
+    }
+  }
+
+  &.warning {
+    @include button(38px, 1px, $warning);
+  }
+
+  &.hub {
+    @include button(38px, 1px, $hub);
+  }
+
+  &.pass {
+    @include button(38px, 1px, $pass);
+  }
+
+  &.pal {
+    @include button(38px, 1px, $pal);
+  }
+
+  &.pro {
+    @include button(38px, 1px, $pro);
+  }
+
+  &.tick {
+    @include button(38px, 1px, $tick);
+  }
+
+  &.short {
+    height: (28px + 16px) !important;
+
+    div.ion-activatable {
+      height: 28px !important;
+
+      ion-label,
+      ion-title {
+        font-size: 14px !important;
+      }
+
+      .icon {
+        &.left {
+          font-size: 25px !important;
+        }
+
+        &.right {
+          font-size: 20px !important;
+        }
+      }
+    }
+  }
+
+  &.half {
+    width: 95% !important;
+    margin: auto !important;
+  }
+}

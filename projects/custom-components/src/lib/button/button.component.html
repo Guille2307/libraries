@@ -1,0 +1,12 @@
+<button [disabled]="disabled" [ngClass]="{'short': short, 'button': class === 'button', 'cancel': class === 'cancel',
+  'accept': class === 'accept', 'warning': class === 'warning', 'hub': class === 'hub', 'tick': class === 'tick',
+  'pro': class === 'pro', 'pass': class === 'pass', 'pal': class === 'pal', 'disabled': disabled, 'half': half}"
+  [type]="{'button': type === 'button', 'submit': type === 'submit'}" (click)="click($event)">
+  <div class="ion-activatable ripple-parent"
+    [ngClass]="{'no-pad': iconLeft === '' && iconRight === ''}">
+    <i *ngIf="iconLeft !== ''" class="icon left {{iconLeft}}"></i>
+    <ion-title [ngClass]="{'title-large': !half, 'title-small': half}" [innerHtml]="translation"></ion-title>
+    <i *ngIf="iconRight !== ''" class="icon right {{iconRight}}"></i>
+    <ion-ripple-effect></ion-ripple-effect>
+  </div>
+</button>

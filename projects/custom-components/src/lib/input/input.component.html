@@ -1,0 +1,6 @@
+<form [formGroup]="form" (ngSubmit)="sendValue()" accept-charset="utf-8"
+  [ngClass]="{'input': class === 'input', 'transparent': class === 'transparent', 'disabled': disabled}">
+  <i *ngIf="iconLeft !== ''" class="icon left {{iconLeft}}"></i>
+  <input formControlName="input" [type]="{'text': type === 'text', 'number': type === 'number'}" [placeholder]="placeholder">
+  <i *ngIf="iconRight !== ''" class="icon right {{iconRight}}"></i>
+</form>

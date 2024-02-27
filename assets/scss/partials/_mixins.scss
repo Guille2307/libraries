@@ -1,0 +1,291 @@
+@import "variables";
+
+@mixin button($height, $widthBorder, $colorBorder) {
+  height: ($height + 16px);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  display: flex;
+  border: none;
+
+  &:hover {
+    div.ion-activatable {
+      background: $colorBorder;
+      box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.42);
+      -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.42);
+
+      ion-label,
+      ion-title {
+        color: $hoverButton;
+      }
+
+      span {
+        color: $hoverButton !important;
+      }
+
+      .icon {
+        color: $hoverButton !important;
+      }
+    }
+
+    &:disabled,
+    &.disabled {
+      div.ion-activatable {
+        background-color: $backgroundButton;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+
+        .icon {
+          color: rgba($colorBorder, 0.42) !important;
+        }
+      }
+    }
+  }
+
+  &:active {
+    div.ion-activatable {
+      background: $colorBorder;
+      box-shadow: none;
+      -webkit-box-shadow: none;
+    }
+  }
+
+  &:disabled {
+    pointer-events: none;
+  }
+
+  &.disabled,
+  &:disabled {
+    cursor: default;
+
+    div.ion-activatable {
+      border-color: rgba($colorBorder, 0.42);
+
+      ion-label,
+      ion-title {
+        color: rgba($fontButton, 0.42);
+        cursor: default;
+      }
+
+      span {
+        color: rgba($colorBorder, 0.42) !important;
+      }
+
+      .icon {
+        &.left {
+          color: rgba($colorBorder, 0.42);
+        }
+
+        &.right {
+          color: rgba($fontButton, 0.42);
+        }
+      }
+    }
+  }
+
+  div.ion-activatable {
+    transition: background 0.5s;
+    position: relative;
+    height: $height;
+    width: 100%;
+    min-width: calc(100% - 76px);
+    border: $widthBorder solid $colorBorder;
+    background-color: $backgroundButton;
+    border-radius: 25px;
+    margin: 8px 0;
+    padding: 0 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.no-pad-left {
+      padding-left: 0 !important;
+    }
+
+    &.no-pad-right {
+      padding-right: 0 !important;
+    }
+
+    &.no-pad {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+
+    &.ripple-parent {
+      position: relative;
+      overflow: hidden;
+    }
+
+    ion-label,
+    ion-title {
+      color: $fontButton;
+      transition: color 0.5s;
+      text-transform: uppercase;
+      text-align: center;
+      max-width: 100%;
+      padding: 0;
+      display: inline-grid;
+      height: auto;
+      font-size: 16px;
+      font-weight: 400;
+      margin: auto 8px;
+      position: relative;
+    }
+
+    .icon {
+      position: absolute;
+      transition: color 0.5s;
+
+      &.left {
+        color: $colorBorder;
+        left: 8px;
+        font-size: 35px;
+      }
+
+      &.right {
+        color: $fontButton;
+        right: 8px;
+        font-size: 25px;
+      }
+    }
+  }
+}
+
+@mixin transparentButton($height, $widthBorder, $colorTextHover) {
+  height: ($height + 16px);
+  width: 100%;
+  margin: auto;
+  padding: 0;
+  background: transparent;
+  display: flex;
+  border: none;
+
+  &:hover {
+    div.ion-activatable {
+      background: white;
+      box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.42);
+      -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.42);
+
+      ion-label,
+      ion-title {
+        color: $colorTextHover;
+      }
+
+      span {
+        color: $colorTextHover !important;
+      }
+
+      .icon {
+        color: $colorTextHover !important;
+      }
+    }
+
+    &:disabled,
+    &.disabled {
+      div.ion-activatable {
+        background-color: transparent;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+
+        .icon {
+          color: rgba(white, 0.42) !important;
+        }
+      }
+    }
+  }
+
+  &:active {
+    div.ion-activatable {
+      background: white;
+      box-shadow: none;
+      -webkit-box-shadow: none;
+    }
+  }
+
+  &:disabled {
+    pointer-events: none;
+  }
+
+  &.disabled,
+  &:disabled {
+    cursor: default;
+
+    div.ion-activatable {
+      border-color: rgba(white, 0.42);
+
+      ion-label,
+      ion-title {
+        color: rgba(white, 0.42);
+        cursor: default;
+      }
+
+      span {
+        color: rgba(white, 0.42) !important;
+      }
+
+      .icon {
+        &.left {
+          color: rgba(white, 0.42);
+        }
+
+        &.right {
+          color: rgba(white, 0.42);
+        }
+      }
+    }
+  }
+
+  div.ion-activatable {
+    transition: background 0.5s;
+    position: relative;
+    height: $height;
+    width: 100%;
+    min-width: calc(100% - 76px);
+    border: $widthBorder solid white;
+    background-color: transparent;
+    border-radius: 25px;
+    margin: 8px 0;
+    padding: 0 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.ripple-parent {
+      position: relative;
+      overflow: hidden;
+    }
+
+    ion-label,
+    ion-title {
+      color: white;
+      transition: color 0.5s;
+      text-transform: uppercase;
+      text-align: center;
+      max-width: 100%;
+      padding: 0;
+      display: inline-grid;
+      height: auto;
+      font-size: 18px;
+      font-weight: bold;
+      margin: auto 8px;
+      position: relative;
+    }
+
+    .icon {
+      position: absolute;
+      transition: color 0.5s;
+      color: white;
+
+      &.left {
+        left: 8px;
+        font-size: 35px;
+      }
+
+      &.right {
+        right: 8px;
+        font-size: 25px;
+      }
+    }
+  }
+}
